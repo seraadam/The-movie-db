@@ -1,7 +1,9 @@
 package db.movie.the.themoviedb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +58,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         @Override
         public void onBindViewHolder(MoviesAdapter.MyViewHolder holder, int position) {
 
-            Movie movie = movieList.get(position);
+            final Movie movie = movieList.get(position);
             holder.title.setText(movie.getTitle());
             holder.release_date.setText(movie.getRelease_date());
 
@@ -68,12 +70,26 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             holder.genre.setText(movie.getGenre_ids().toString());
             // loading movie cover using Glide library
             Glide.with(mContext).load(movie.getPoster_path()).into(holder.poster_path);
+            holder.poster_path.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent movieid = new Intent(mContext , DetailsActivity.class);
+                    movieid.putExtra("movieid", String.valueOf(movie.getId()));
+                    Log.i("movieid : " , String.valueOf(movie.getId()));
+                    mContext.startActivity(movieid);
+
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
             return movieList.size();
         }
+
+
+
+
     }
 
 

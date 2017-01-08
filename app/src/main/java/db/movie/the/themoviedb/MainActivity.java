@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
      //   String url = "https://api.themoviedb.org/3/movie/popular?api_key=6b048567fc3948dc98e266e25cbea74d&language=ar-AR&page=1";
 
 
-        for(int pages=1 ; pages<=9 ; pages++){
+        for(int pages=1 ; pages<=100 ; pages++){
 
             String popularurl = "https://api.themoviedb.org/3/movie/popular?api_key=6b048567fc3948dc98e266e25cbea74d&language=ar-AR&page="
                     +Integer.toString(pages);

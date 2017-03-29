@@ -1,13 +1,160 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<android.support.v7.widget.CardView android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/card_margin"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:scrollbars="vertical">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/mtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/album_title_padding"
+                android:paddingRight="@dimen/album_title_padding"
+                android:paddingTop="@dimen/album_title_padding"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/album_title"
+                android:textSize="18sp"
+                    />
+
+            <ImageButton
+                android:id="@+id/fav"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/fav"
+                android:scaleType="centerCrop"
+                android:background="@null"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="180dp"
+                android:layout_toRightOf="@+id/mtitle" />
+
+            <ImageView
+                android:id="@+id/moviedate"
+                android:layout_width="@dimen/ic_album_overflow_width"
+                android:layout_height="@dimen/ic_album_overflow_height"
+                android:layout_below="@id/mtitle"
+                android:src="@drawable/calendar"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/rdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below ="@id/mtitle"
+                android:layout_toRightOf="@id/moviedate"
+                android:paddingBottom="@dimen/songs_count_padding_bottom"
+                android:textSize="@dimen/songs_count"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical"
+                />
+
+
+            <ImageView
+                android:id="@+id/movievote"
+                android:layout_width="@dimen/ic_album_overflow_width"
+                android:layout_height="@dimen/ic_album_overflow_height"
+                android:layout_below="@id/moviedate"
+                android:src="@drawable/rate"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/vote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below ="@id/rdate"
+                android:layout_toRightOf="@id/movievote"
+                android:textSize="@dimen/songs_count"
+                />
+
+
+            <ImageView
+                android:id="@+id/lang"
+                android:layout_width="@dimen/ic_album_overflow_width"
+                android:layout_height="@dimen/ic_album_overflow_height"
+                android:layout_below="@id/movievote"
+                android:src="@drawable/ball"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp" />
+            <TextView
+                android:id="@+id/movielang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below ="@id/vote"
+                android:layout_toRightOf="@id/vote"
+                android:textSize="@dimen/songs_count"
+                android:layout_marginTop="20dp"
+                android:text="en"/>
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.CardView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="5dp"
+            card_view:cardCornerRadius="@dimen/card_album_radius"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+               android:layout_marginTop="@dimen/activity_vertical_margin"
+               android:layout_marginLeft="10dp"
+                android:text="@string/app_overview" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:lineSpacingExtra="5dp"
+                android:id="@+id/overview"
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:text="@string/app_Trailers"
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,13 +1,18 @@
 package db.movie.the.themoviedb;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
@@ -19,6 +24,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +36,14 @@ import java.util.List;
 
 public class DetailsFragment extends Fragment {
     public String movieID;
-    private OnFragmentInteractionListener mListener;
+    private Context mContext;
+    private  View view;
+    private  View mainview;
+    private TextView movietitle;
+    private TextView movieoverview;
+    private TextView moviedate;
+    private TextView movievote;
+
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -54,14 +68,22 @@ public class DetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_details, container, false);
-        ;
+        view = inflater.inflate(R.layout.fragment_details, container, false);
+       // mainview = inflater.inflate(R.layout.activity_details, container, false);
+
+        movietitle = (TextView) view.findViewById(R.id.mtitle);
+        movieoverview = (TextView) view.findViewById(R.id.overview);
+        moviedate = (TextView) view.findViewById(R.id.rdate);
+         movievote = (TextView) view.findViewById(R.id.vote);
+
+
         // get the 'extra'
         movieID = getActivity().getIntent().getStringExtra("movieid");
         fetch();
         // Inflate the layout for this fragment
         return view;
     }
+
 
     private void fetch() {
         Log.i("movie id : ", movieID);
@@ -76,10 +98,22 @@ public class DetailsFragment extends Fragment {
                             Log.i("response : ", response.toString());
 
                             // the response is already constructed as a JSONObject!
-                            String backdrop_path = response.getString("backdrop_path");
-                            Log.i("backdrop_path : " , backdrop_path);
+
                             String budget = response.getString("budget");
                              Log.i("budget : " , budget);
+
+                            JSONObject videoobject  = response.getJSONObject("videos");
+                            JSONArray videos = videoobject.getJSONArray("results");
+                            for(int i=0;i< videos.length();i++){
+                                JSONObject video = videos.getJSONObject(i);
+                                if(video.getString("site").equalsIgnoreCase("YouTube")){
+                                    String ytkey = video.getString("key");
+                                    Log.i("youtube key "+ i + " :  " ,ytkey);
+                                }
+
+                            }
+
+                          //  Glide.with(getActivity().getApplicationContext()).load("https://image.tmdb.org/t/p/w500/rSZs93P0LLxqlVEbI001UKoeCQC.jpg").into((ImageView) findViewById(R.id.detailsbackdrop));
 
                             JSONArray gen = response.getJSONArray("genres");
                             for (int i = 0; i < gen.length(); i++) {
@@ -99,26 +133,52 @@ public class DetailsFragment extends Fragment {
 
                             String imdb_id = response.getString("imdb_id");
                             Log.i("imdb_id : " , imdb_id);
+
                             String original_language = response.getString("original_language");
                             Log.i("original_language : " , original_language);
+
                             String original_title = response.getString("original_title");
+                            movietitle.setText(original_title);
                             Log.i("original_title : " , original_title);
+
                             String overview = response.getString("overview");
+                            movieoverview.setText(overview);
                             Log.i("overview : " , overview);
+
                             String popularity = response.getString("popularity");
-                            Log.i("popularity : " , popularity);
-                            String poster_path = response.getString("poster_path");
+                            //Log.i("popularity : " , popularity);
+
+                            String backdrop_path =  "https://image.tmdb.org/t/p/w500" + response.getString("backdrop_path");
+                            Log.i("backdrop_path : " , backdrop_path);
+
+                            String poster_path = "https://image.tmdb.org/t/p/w500" + response.getString("poster_path");
                             Log.i("poster_path : " , poster_path);
+
+                            try {
+
+                                loadImage(Glide.with(getActivity().getApplicationContext()), backdrop_path, (ImageView) getActivity().findViewById(R.id.detailsbackdrop));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                Log.i("image error : " , "Glide image error"+ poster_path);
+                            }
+
+
+
                             String release_date = response.getString("release_date");
                             Log.i("release_date : " , release_date);
+                            moviedate.setText(release_date);
+
                             String revenue = response.getString("revenue");
                             Log.i("revenue : " , revenue);
                             String status = response.getString("status");
                             Log.i("status : " , status);
                             String video = response.getString("video");
                             Log.i("video : " , video);
+
                             String vote_average = response.getString("vote_average");
                             Log.i("vote_average : " , vote_average);
+                            movievote.setText(vote_average);
+
                             boolean adult = response.getBoolean("adult");
 
 
@@ -159,6 +219,10 @@ public class DetailsFragment extends Fragment {
         rq.add(jsonObjReq);
     }
 
+    public static void loadImage(RequestManager glide, String url, ImageView view) {
+        glide.load(url).into(view);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -166,18 +230,5 @@ public class DetailsFragment extends Fragment {
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
 }

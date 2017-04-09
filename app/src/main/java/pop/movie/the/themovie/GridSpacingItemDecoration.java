@@ -1,10 +1,7 @@
-package db.movie.the.themoviedb;
+package pop.movie.the.themovie;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.View;
 
 /**

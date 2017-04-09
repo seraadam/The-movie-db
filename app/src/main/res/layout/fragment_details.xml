@@ -1,25 +1,42 @@
-<android.support.v7.widget.CardView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:layout_margin="@dimen/card_margin"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:scrollbars="vertical">
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_weight="1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+
+            >
 
             <TextView
                 android:id="@+id/mtitle"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/album_title_padding"
-                android:paddingRight="@dimen/album_title_padding"
                 android:paddingTop="@dimen/album_title_padding"
                 android:layout_marginBottom="30dp"
                 android:layout_marginLeft="20dp"
@@ -30,14 +47,17 @@
 
             <ImageButton
                 android:id="@+id/fav"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/fav"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 android:background="@null"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="180dp"
-                android:layout_toRightOf="@+id/mtitle" />
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:gravity="end"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
             <ImageView
                 android:id="@+id/moviedate"
@@ -47,7 +67,7 @@
                 android:src="@drawable/calendar"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="5dp" />
 
             <TextView
                 android:id="@+id/rdate"
@@ -55,7 +75,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below ="@id/mtitle"
                 android:layout_toRightOf="@id/moviedate"
-                android:paddingBottom="@dimen/songs_count_padding_bottom"
                 android:textSize="@dimen/songs_count"
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_vertical"
@@ -70,7 +89,7 @@
                 android:src="@drawable/rate"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="5dp" />
 
             <TextView
                 android:id="@+id/vote"
@@ -96,12 +115,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below ="@id/vote"
-                android:layout_toRightOf="@id/vote"
+                android:layout_toRightOf="@id/lang"
                 android:textSize="@dimen/songs_count"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="en"/>
         </RelativeLayout>
 
+</LinearLayout>
 
         <android.support.v7.widget.CardView android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,4 +177,4 @@
 
 
     </LinearLayout>
-</android.support.v7.widget.CardView>
+

@@ -1,4 +1,4 @@
-package db.movie.the.themoviedb;
+package pop.movie.the.themovie;
 import android.app.Application;
 import android.text.TextUtils;
 

@@ -1,12 +1,9 @@
-package db.movie.the.themoviedb;
+package pop.movie.the.themovie;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 public class DetailsFragment extends Fragment {
     public String movieID;
@@ -157,6 +153,8 @@ public class DetailsFragment extends Fragment {
                             try {
 
                                 loadImage(Glide.with(getActivity().getApplicationContext()), backdrop_path, (ImageView) getActivity().findViewById(R.id.detailsbackdrop));
+                                loadImage(Glide.with(getActivity().getApplicationContext()), poster_path, (ImageView) getActivity().findViewById(R.id.thumbnail));
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 Log.i("image error : " , "Glide image error"+ poster_path);

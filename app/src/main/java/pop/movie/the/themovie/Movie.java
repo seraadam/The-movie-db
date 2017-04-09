@@ -1,6 +1,4 @@
-package db.movie.the.themoviedb;
-
-import java.lang.reflect.Array;
+package pop.movie.the.themovie;
 
 /**
  * Created by mac on 11/28/16.

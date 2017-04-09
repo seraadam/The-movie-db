@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
     defaultConfig {
-        applicationId "db.movie.the.themoviedb"
+        applicationId "pop.movie.the.themovie"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1

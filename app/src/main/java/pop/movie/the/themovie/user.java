@@ -1,4 +1,4 @@
-package db.movie.the.themoviedb;
+package pop.movie.the.themovie;
 
 /**
  * Created by mac on 11/28/16.

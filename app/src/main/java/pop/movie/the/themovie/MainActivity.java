@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MoviesAdapter adapter;
     private List<Movie> movieList;
-    String popularurl= "https://api.themoviedb.org/3/movie/now_playing?api_key=6b048567fc3948dc98e266e25cbea74d&language=en-US&page=" ;
+    String popularurl= "https://api.themoviedb.org/3/movie/popular?api_key=6b048567fc3948dc98e266e25cbea74d&language=en-US&page=" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package pop.movie.the.themovie;
+package ref.pic.the.therefpic;
 
 import android.content.Context;
 import android.os.Bundle;

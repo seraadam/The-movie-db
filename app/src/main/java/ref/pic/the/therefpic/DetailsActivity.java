@@ -1,4 +1,4 @@
-package pop.movie.the.themovie;
+package ref.pic.the.therefpic;
 
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;

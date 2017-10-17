@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">The movie db</string>
+    <string name="app_name">Show</string>
     <string name="app_overview">Overview</string>
     <string name="app_Trailers">Trailers</string>
     <string name="action_settings">Settings</string>
@@ -9,8 +9,8 @@
     <string name="action_add_favourite">Add to Favourites</string>
     <string name="action_play_next">Play Next</string>
     <string name="year"> 2016 </string>
-    <string name="backdrop_title">THE MOVIE DB !</string>
-    <string name="backdrop_subtitle">Check the most popular Latest movies</string>
+    <string name="backdrop_title">Shows!</string>
+    <string name="backdrop_subtitle">Check the most popular show</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,4 +1,4 @@
-package pop.movie.the.themovie;
+package ref.pic.the.therefpic;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

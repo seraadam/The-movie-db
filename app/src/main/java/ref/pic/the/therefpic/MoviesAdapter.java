@@ -1,4 +1,4 @@
-package pop.movie.the.themovie;
+package ref.pic.the.therefpic;
 
 import android.content.Context;
 import android.content.Intent;
@@ -68,8 +68,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
                 String genres = ;
             }*/
             holder.genre.setText(movie.getGenre_ids().toString());
-            // loading movie cover using Glide library
-            Glide.with(mContext).load(movie.getPoster_path()).into(holder.poster_path);
+            if(movie.getPoster_path().equals(null)){
+                holder.poster_path.setImageResource(R.drawable.temp);
+            }
+            else{
+                // loading movie cover using Glide library
+                Glide.with(mContext).load(movie.getPoster_path()).into(holder.poster_path);
+            }
+
             holder.poster_path.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -6,8 +6,10 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MoviesAdapter adapter;
     private List<Movie> movieList;
-    String popularurl ="https://api.themoviedb.org/3/movie/popular?api_key=6b048567fc3948dc98e266e25cbea74d&language=ar-AR&page=";
+    String popularurl= "https://api.themoviedb.org/3/movie/now_playing?api_key=6b048567fc3948dc98e266e25cbea74d&language=en-US&page=" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             Bundle bundle = new Bundle();
-            bundle.putString("url", popularurl);
-
+            bundle.putString("url", getpopularurl());
+            Log.i("getpopularurl : " , getpopularurl());
             // set Fragmentclass Arguments
             // using a fragment transaction.
             mainFragment fragment = new mainFragment();
@@ -94,28 +96,41 @@ public class MainActivity extends AppCompatActivity {
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-
+        switch (item.getItemId()) {
             case R.id.action_nowplaying:
                 popularurl = "https://api.themoviedb.org/3/movie/now_playing?api_key=6b048567fc3948dc98e266e25cbea74d&language=en-US&page=";
+                setpopularurl(popularurl);
                 return true;
             case R.id.action_upcoming:
                 popularurl = "https://api.themoviedb.org/3/movie/upcoming?api_key=6b048567fc3948dc98e266e25cbea74d&language=en-US&page=";
+                setpopularurl(popularurl);
                 return true;
             default:
                 popularurl ="https://api.themoviedb.org/3/movie/popular?api_key=6b048567fc3948dc98e266e25cbea74d&language=ar-AR&page=";
-                return true;
+                setpopularurl(popularurl);
+                return super.onOptionsItemSelected(item);
         }
 
+    }
+
+
+    public void  setpopularurl (String popularurl){
+        this.popularurl= popularurl;
+    }
+
+    public String getpopularurl(){
+
+        return popularurl;
     }
 }

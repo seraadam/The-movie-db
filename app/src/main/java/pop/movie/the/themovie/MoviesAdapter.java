@@ -74,6 +74,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
                 @Override
                 public void onClick(View view) {
                     Intent movieid = new Intent(mContext , DetailsActivity.class);
+                    movieid.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     movieid.putExtra("movieid", String.valueOf(movie.getId()));
                     Log.i("movieid : " , String.valueOf(movie.getId()));
                     mContext.startActivity(movieid);
